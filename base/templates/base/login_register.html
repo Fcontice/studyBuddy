@@ -1,16 +1,15 @@
 {% extends 'main.html' %} {% block content %}
-    <main class="auth layout">
-
-      {% if page == 'login' %}
-      <div class="container">
-        <div class="layout__box">
-          <div class="layout__boxHeader">
-            <div class="layout__boxTitle">
-              <h3>Login</h3>
-            </div>
+<main class="auth layout">
+    {% if page == 'login' %}
+    <div class="container">
+      <div class="layout__box">
+        <div class="layout__boxHeader">
+          <div class="layout__boxTitle">
+            <h3>Login</h3>
           </div>
-          <div class="layout__body">
-            <h2 class="auth__tagline">Find your study partner</h2>
+        </div>
+        <div class="layout__body">
+          <h2 class="auth__tagline">Find your study partner</h2>
 
             <form class="form" action="" method="POST">
               {% csrf_token %}
@@ -103,7 +102,7 @@
             </div>
           </div>
         </div>
-      </div>
+ </div>
       {% endif %}
     </main>
 {% endblock content %}
