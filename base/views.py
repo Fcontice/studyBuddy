@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .models import Room, Topic, Message
-from .forms import RoomForm
+from .forms import RoomForm, UserForm
 # Create your views here.
 
 def loginPage(request):
@@ -87,7 +87,8 @@ def room(request, pk):
         room.participants.add(request.user)
         return redirect('room', pk=room.id)
 
-    context = {"room":room, 'room_messages':room_messages, 'participants':participants}
+    context = {'room': room, 'room_messages': room_messages,
+               'participants': participants}
     return render(request, 'base/room.html', context)
 
 def userProfile(request, pk):
@@ -167,7 +168,7 @@ def deleteMessage(request, pk):
 def updateUser(request):
     user = request.user
     form = UserForm(instance=user)
-
+    
     if request.method == 'POST':
         form = UserForm(request.POST, instance=user)
         if form.is_valid():
